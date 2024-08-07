@@ -7,7 +7,7 @@ function App() {
     const [length, setLength] = useState(20);
     const [passwoard, setPassword] = useState('');
     const inputRef = useRef(null);
-    const MIN_LENGTH = 8;
+    const MIN_LENGTH = 10;
     const MAX_LENGTH = 50;
 
     const alpha = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -59,7 +59,7 @@ function App() {
                         value={length}
                         onChange={(e)=>setLength(e.target.value)}
                     />
-                    <span id='length' style={{minWidth: '50px'}}>{length}</span>
+                    <span id='length'>{length}</span>
                 </div>
                 <label>
                     number

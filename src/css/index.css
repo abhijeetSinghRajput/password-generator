@@ -1,11 +1,12 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: sans-serif;
     list-style: none;
 }
-body{
+
+body {
     min-height: 100svh;
     width: 100vw;
     background-color: #0b111c;
@@ -14,25 +15,28 @@ body{
     align-items: center;
     justify-content: center;
 }
-#range-box{
+
+#range-box {
     display: flex;
     align-items: center;
     gap: 4px;
 }
-.card{
+
+.card {
     padding: 30px;
     border-radius: 20px;
     border: 1px solid rgb(65, 70, 86);
     margin: auto;
     background-color: #1d2533;
 }
-.card h1{
+
+.card h1 {
     font-size: 24px;
     text-align: center;
     margin-bottom: 20px;
 }
 
-button{
+button {
     background-color: royalblue;
     color: #f1f1f1;
     outline: none;
@@ -44,14 +48,17 @@ button{
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
 }
-button:hover{
+
+button:hover {
     filter: brightness(90%);
 }
-.card #input-box{
+
+.card #input-box {
     display: flex;
     border-radius: 10px;
 }
-.card input{
+
+.card input {
     outline: none;
     flex: 1;
     padding: 12px;
@@ -64,22 +71,38 @@ button:hover{
     font-weight: 600;
 }
 
-.flex-box{
+.flex-box {
     display: flex;
     align-items: center;
     gap: 16px;
     width: max-content;
     user-select: none;
+    padding: 8px 16px;
 }
-label{
+
+label {
     display: flex;
     align-items: center;
     gap: 4px;
     text-transform: capitalize;
     cursor: pointer;
 }
-input[type="checkbox"]{
-    width: 16px;
+
+input[type="checkbox"] {
+    width: 15px;
     aspect-ratio: 1;
     cursor: pointer;
+}
+
+@media screen and (max-width: 500px) {
+    .card {
+        padding: 20px;
+        width: 90vw;
+    }
+
+    .flex-box {
+        padding: 0;
+        margin: auto;
+        margin-top: 6px;
+    }
 }
