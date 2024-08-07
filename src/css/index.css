@@ -45,8 +45,6 @@ button {
     padding: 12px;
     cursor: pointer;
     font-size: 16px;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
 }
 
 button:hover {
@@ -56,16 +54,16 @@ button:hover {
 .card #input-box {
     display: flex;
     border-radius: 10px;
+    overflow: hidden;
+    border: 3px solid royalblue;
 }
 
 .card input {
     outline: none;
     flex: 1;
     padding: 12px;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border: 2px solid royalblue;
     background-color: rgb(205, 212, 215);
+    border: none;
     font-size: 16px;
     color: royalblue;
     font-weight: 600;
@@ -92,6 +90,33 @@ input[type="checkbox"] {
     width: 15px;
     aspect-ratio: 1;
     cursor: pointer;
+}
+
+#message-box {
+    padding: 8px 12px;
+    border-radius: 12px;
+    background-color: white;
+    max-width: max-content;
+    text-align: center;
+    text-transform: lowercase;
+    position: fixed;
+    bottom: 5vh;
+    visibility: hidden;
+    left: 50%;
+    transform: translateX(-50%) scale(0);
+    z-index: 100;
+    box-shadow: -2px 3px 10px rgba(0, 0, 0, 0.5);
+    color: rgb(68, 68, 68);
+    transition: .2s ease-in-out;
+    opacity: 0;
+}
+
+#message-box.active {
+    bottom: 10vh;
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
+    transform: translateX(-50%) scale(1);
 }
 
 @media screen and (max-width: 500px) {

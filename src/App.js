@@ -6,7 +6,7 @@ function App() {
     const [symbolAllowed, setSymbolAllowed] = useState(false);
     const [length, setLength] = useState(20);
     const [passwoard, setPassword] = useState('');
-    const inputRef = useRef(null);
+    const messageRef = useRef(null);
     const MIN_LENGTH = 10;
     const MAX_LENGTH = 50;
 
@@ -27,52 +27,61 @@ function App() {
         setPassword(str);
     }, [numberAllowed, symbolAllowed, length, setPassword]);
     useEffect(
-        passwordGenerator, 
+        passwordGenerator,
         [numberAllowed, symbolAllowed, length, setPassword]
     );
     const copy = () => {
-        inputRef.current?.select();
-        window.navigator.clipboard.writeText(passwoard);
+        const message = messageRef.current;
+        if(message){
+            message.classList.add('active');
+            setTimeout(() => {
+                    message.classList.remove('active');
+            }, 2000);
+        }
+
+        window.navigator.clipboard.writeText(passwoard)
     }
 
     return (
-        <div className='card'>
-            <h1>Password Generator</h1>
-            <div id='input-box' tabIndex={0}>
-                <input
-                    type='text'
-                    value={passwoard}
-                    ref={inputRef}
-                    placeholder='Password'
-                    readOnly
-                />
-                <button id='copy' onClick={copy}>copy</button>
-            </div>
-
-            <div className='flex-box'>
-                <div id='range-box'>
+        <>
+            <div id='message-box' ref={messageRef}>copied</div>
+            <div className='card'>
+                <h1>Password Generator</h1>
+                <div id='input-box' tabIndex={0}>
                     <input
-                        type="range"
-                        id="range-input"
-                        min={MIN_LENGTH}
-                        max={MAX_LENGTH}
-                        value={length}
-                        onChange={(e)=>setLength(e.target.value)}
+                        type='text'
+                        value={passwoard}
+                        placeholder='Password'
+                        readOnly
                     />
-                    <span id='length'>{length}</span>
+                    <button id='copy' onClick={copy}>copy</button>
                 </div>
-                <label>
-                    number
-                    <input type='checkbox' onClick={() => setNumberAllowed(prev => !prev)} />
-                </label>
-                <label>
-                    symbol
-                    <input type='checkbox'
-                        onClick={() => setSymbolAllowed(prev => !prev)}
-                    />
-                </label>
+
+                <div className='flex-box'>
+                    <div id='range-box'>
+                        <input
+                            type="range"
+                            id="range-input"
+                            min={MIN_LENGTH}
+                            max={MAX_LENGTH}
+                            value={length}
+                            onChange={(e) => setLength(e.target.value)}
+                        />
+                        <span id='length'>{length}</span>
+                    </div>
+                    <label>
+                        number
+                        <input type='checkbox' onClick={() => setNumberAllowed(prev => !prev)} />
+                    </label>
+                    <label>
+                        symbol
+                        <input type='checkbox'
+                            onClick={() => setSymbolAllowed(prev => !prev)}
+                        />
+                    </label>
+                </div>
             </div>
-        </div>
+        </>
     )
 }
 
